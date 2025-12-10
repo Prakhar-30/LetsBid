@@ -11,39 +11,53 @@
 }
 
 body {
-  background-color: #1a1a1a;
+  background-color: #000000;
   color: #f5f5f5;
   font-family: 'Caveat', cursive;
   overflow-x: hidden;
   cursor: none;
 }
 
+/* Show default cursor on mobile */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
 /* Chalk-like text effect */
 .chalk-text {
   font-family: 'Caveat', cursive;
-  color: #f5f5f5;
+  color: #e8e8e8;
   text-shadow:
-    0 0 2px rgba(255, 255, 255, 0.3),
-    0 0 4px rgba(255, 255, 255, 0.2);
+    1px 1px 0 rgba(255, 255, 255, 0.4),
+    -1px -1px 0 rgba(0, 0, 0, 0.5),
+    0 0 3px rgba(255, 255, 255, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.5px;
+  filter: contrast(1.1) brightness(1.05);
 }
 
 .chalk-title {
   font-family: 'Permanent Marker', cursive;
-  color: #ffffff;
+  color: #f0f0f0;
   text-shadow:
-    2px 2px 0 rgba(0, 0, 0, 0.3),
-    0 0 5px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.2);
+    2px 2px 0 rgba(0, 0, 0, 0.4),
+    -1px -1px 0 rgba(255, 255, 255, 0.3),
+    0 0 5px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.3),
+    1px 2px 3px rgba(0, 0, 0, 0.4);
   letter-spacing: 1px;
+  filter: contrast(1.15) brightness(1.1);
+  opacity: 0.95;
 }
 
 /* Blackboard texture */
 .blackboard {
-  background-color: #1a1a1a;
+  background-color: #000000;
   background-image:
-    linear-gradient(90deg, transparent 79px, rgba(255, 255, 255, 0.02) 79px, rgba(255, 255, 255, 0.02) 81px, transparent 81px),
-    linear-gradient(rgba(255, 255, 255, 0.02) 0.5px, transparent 0.5px);
+    linear-gradient(90deg, transparent 79px, rgba(255, 255, 255, 0.01) 79px, rgba(255, 255, 255, 0.01) 81px, transparent 81px),
+    linear-gradient(rgba(255, 255, 255, 0.01) 0.5px, transparent 0.5px);
   background-size: 81px 81px, 100% 1.2em;
   position: relative;
 }
@@ -58,6 +72,13 @@ body {
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.1s ease;
+}
+
+/* Hide custom cursor on mobile */
+@media (max-width: 768px) {
+  #custom-cursor {
+    display: none;
+  }
 }
 
 /* Spotlight effect */
@@ -92,6 +113,7 @@ body {
   box-shadow:
     inset 0 0 10px rgba(255, 255, 255, 0.1),
     0 0 15px rgba(255, 255, 255, 0.1);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .chalk-button:hover {
@@ -100,6 +122,15 @@ body {
   box-shadow:
     inset 0 0 15px rgba(255, 255, 255, 0.2),
     0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile button adjustments */
+@media (max-width: 768px) {
+  .chalk-button {
+    font-size: 18px;
+    padding: 14px 20px;
+    min-height: 48px; /* Better touch target */
+  }
 }
 
 /* Input styles - chalk-like */
@@ -114,6 +145,7 @@ body {
   border-radius: 6px;
   outline: none;
   transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .chalk-input:focus {
@@ -124,6 +156,15 @@ body {
 
 .chalk-input::placeholder {
   color: rgba(255, 255, 255, 0.4);
+}
+
+/* Mobile input adjustments */
+@media (max-width: 768px) {
+  .chalk-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 14px 16px;
+    min-height: 48px;
+  }
 }
 
 /* Card styles */
@@ -148,7 +189,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -174,4 +215,38 @@ body {
 
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out;
+}
+
+/* Mobile responsive utilities */
+@media (max-width: 768px) {
+  .chalk-title {
+    letter-spacing: 0.5px;
+  }
+
+  .chalk-card {
+    padding: 16px;
+  }
+
+  /* Reduce spotlight effect on mobile to improve performance */
+  .spotlight-container {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 640px) {
+  .chalk-card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+}
+
+/* Prevent text selection issues on mobile */
+@media (hover: none) and (pointer: coarse) {
+  .chalk-button:hover {
+    transform: none;
+  }
+
+  .chalk-card:hover {
+    transform: none;
+  }
 }

@@ -36,11 +36,11 @@ export function PlaceBidForm() {
 
   return (
     <div className="chalk-card h-full">
-      <h3 className="chalk-title text-3xl mb-6">Place Your Bid</h3>
+      <h3 className="chalk-title text-2xl md:text-3xl mb-4 md:mb-6">Place Your Bid</h3>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
         <div>
-          <label className="chalk-text text-xl block mb-2">Item Name</label>
+          <label className="chalk-text text-lg md:text-xl block mb-2">Item Name</label>
           <input
             type="text"
             value={itemName}
@@ -52,7 +52,7 @@ export function PlaceBidForm() {
         </div>
 
         <div>
-          <label className="chalk-text text-xl block mb-2">Bid Amount (ETH)</label>
+          <label className="chalk-text text-lg md:text-xl block mb-2">Bid Amount (ETH)</label>
           <input
             type="number"
             step="0.01"
@@ -65,8 +65,8 @@ export function PlaceBidForm() {
         </div>
 
         {!isConnected ? (
-          <div className="chalk-card bg-white/5 p-4 text-center">
-            <p className="chalk-text text-lg text-white/70">
+          <div className="chalk-card bg-white/5 p-3 md:p-4 text-center">
+            <p className="chalk-text text-base md:text-lg text-white/70">
               Connect your wallet to place bids
             </p>
           </div>
@@ -81,17 +81,17 @@ export function PlaceBidForm() {
         )}
 
         {isConnected && (
-          <div className="chalk-card bg-white/5 p-3">
-            <p className="chalk-text text-sm text-white/60">
+          <div className="chalk-card bg-white/5 p-2 md:p-3">
+            <p className="chalk-text text-xs sm:text-sm text-white/60 break-all">
               Connected: {address?.slice(0, 6)}...{address?.slice(-4)}
             </p>
           </div>
         )}
       </form>
 
-      <div className="mt-8 pt-6 border-t border-white/20">
-        <h4 className="chalk-text text-xl mb-3 text-white/80">How it works:</h4>
-        <ul className="chalk-text text-lg space-y-2 text-white/70">
+      <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-white/20">
+        <h4 className="chalk-text text-lg md:text-xl mb-2 md:mb-3 text-white/80">How it works:</h4>
+        <ul className="chalk-text text-base md:text-lg space-y-1.5 md:space-y-2 text-white/70">
           <li>1. Connect your MetaMask wallet</li>
           <li>2. Enter the item name you want to bid on</li>
           <li>3. Enter your bid amount in ETH</li>

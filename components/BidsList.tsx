@@ -88,12 +88,12 @@ export function BidsList() {
 
   return (
     <div className="chalk-card h-full">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="chalk-title text-3xl">Current Bids</h3>
-        <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 md:mb-6 gap-3">
+        <h3 className="chalk-title text-2xl md:text-3xl">Current Bids</h3>
+        <div className="flex gap-1.5 sm:gap-2">
           <button
             onClick={() => setFilter('all')}
-            className={`chalk-button text-sm py-1 px-3 ${
+            className={`chalk-button text-xs sm:text-sm py-1 px-2 sm:px-3 ${
               filter === 'all' ? 'bg-white/20' : 'bg-white/5'
             }`}
           >
@@ -101,7 +101,7 @@ export function BidsList() {
           </button>
           <button
             onClick={() => setFilter('winning')}
-            className={`chalk-button text-sm py-1 px-3 ${
+            className={`chalk-button text-xs sm:text-sm py-1 px-2 sm:px-3 ${
               filter === 'winning' ? 'bg-white/20' : 'bg-white/5'
             }`}
           >
@@ -109,7 +109,7 @@ export function BidsList() {
           </button>
           <button
             onClick={() => setFilter('active')}
-            className={`chalk-button text-sm py-1 px-3 ${
+            className={`chalk-button text-xs sm:text-sm py-1 px-2 sm:px-3 ${
               filter === 'active' ? 'bg-white/20' : 'bg-white/5'
             }`}
           >
@@ -118,7 +118,7 @@ export function BidsList() {
         </div>
       </div>
 
-      <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+      <div className="space-y-3 md:space-y-4 max-h-[500px] md:max-h-[600px] overflow-y-auto pr-1 md:pr-2">
         {filteredBids.length === 0 ? (
           <div className="chalk-card bg-white/5 p-8 text-center">
             <p className="chalk-text text-xl text-white/60">No bids found</p>
@@ -132,28 +132,28 @@ export function BidsList() {
                 animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both`,
               }}
             >
-              <div className="flex justify-between items-start mb-3">
-                <div className="flex-1">
-                  <h4 className="chalk-text text-2xl font-bold mb-1">
+              <div className="flex justify-between items-start mb-2 md:mb-3">
+                <div className="flex-1 min-w-0">
+                  <h4 className="chalk-text text-lg sm:text-xl md:text-2xl font-bold mb-1 truncate">
                     {bid.itemName}
                   </h4>
-                  <p className="chalk-text text-sm text-white/50">
+                  <p className="chalk-text text-xs sm:text-sm text-white/50">
                     {formatTimestamp(bid.timestamp)}
                   </p>
                 </div>
-                <span className={`chalk-text text-sm font-bold ${getStatusColor(bid.status)}`}>
+                <span className={`chalk-text text-xs sm:text-sm font-bold ml-2 whitespace-nowrap ${getStatusColor(bid.status)}`}>
                   {getStatusBadge(bid.status)}
                 </span>
               </div>
 
-              <div className="flex justify-between items-end">
-                <div>
-                  <p className="chalk-text text-sm text-white/60 mb-1">Bidder</p>
-                  <p className="chalk-text text-lg font-mono">{bid.bidder}</p>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2 sm:gap-0">
+                <div className="min-w-0 flex-1">
+                  <p className="chalk-text text-xs sm:text-sm text-white/60 mb-1">Bidder</p>
+                  <p className="chalk-text text-base sm:text-lg font-mono truncate">{bid.bidder}</p>
                 </div>
-                <div className="text-right">
-                  <p className="chalk-text text-sm text-white/60 mb-1">Amount</p>
-                  <p className="chalk-title text-2xl">{bid.amount} ETH</p>
+                <div className="text-left sm:text-right">
+                  <p className="chalk-text text-xs sm:text-sm text-white/60 mb-1">Amount</p>
+                  <p className="chalk-title text-xl sm:text-2xl">{bid.amount} ETH</p>
                 </div>
               </div>
             </div>
@@ -161,12 +161,12 @@ export function BidsList() {
         )}
       </div>
 
-      <div className="mt-6 pt-4 border-t border-white/20">
+      <div className="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-white/20">
         <div className="flex justify-between items-center">
-          <p className="chalk-text text-lg text-white/70">
-            Total Bids: <span className="font-bold">{filteredBids.length}</span>
+          <p className="chalk-text text-base md:text-lg text-white/70">
+            Total: <span className="font-bold">{filteredBids.length}</span>
           </p>
-          <button className="chalk-button text-sm py-2 px-4">
+          <button className="chalk-button text-xs sm:text-sm py-2 px-3 sm:px-4">
             Refresh
           </button>
         </div>
